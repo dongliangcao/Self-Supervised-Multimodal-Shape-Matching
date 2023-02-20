@@ -1,0 +1,44 @@
+# general setting
+name: faust
+backend: dp # DataParallel
+type: MultiModalModel
+num_gpu: auto
+manual_seed: 1234
+visualize: true
+
+# path
+path:
+  resume_state: checkpoints/surreal.pth
+  resume: false
+
+# datasets
+datasets:
+  test_dataset:
+    name: FaustVal
+    type: PairFaustDataset
+    phase: test
+    data_root: ../data/FAUST_aligned
+    return_evecs: true
+    num_evecs: 80
+    return_faces: true
+    return_corr: true
+    return_dist: true
+
+# network setting
+networks:
+  feature_extractor:
+    type: DiffusionNet
+    in_channels: 3
+    out_channels: 128
+    cache_dir: ../data/FAUST_aligned/diffusion
+  fmap_net:
+    type: RegularizedFMNet
+    bidirectional: false
+
+# validation setting
+val:
+  metrics:
+    geo_error:
+      type: calculate_geodesic_error
+    plot_pck:
+      type: plot_pck

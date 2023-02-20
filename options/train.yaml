@@ -1,0 +1,86 @@
+# general setting
+name: surreal
+backend: dp # DataParallel
+type: MultiModalModel
+num_gpu: auto
+manual_seed: 1234
+
+# path
+path:
+  resume_state: ~
+
+# datasets
+datasets:
+  train_dataset:
+    name: SurrealTrain
+    type: PairSurrealDataset
+    data_root: ../data/surreal5k/
+    return_evecs: true
+    return_faces: true
+    num_evecs: 80
+    return_corr: false
+    return_dist: false
+  test_dataset:
+    name: FaustVal
+    type: PairFaustDataset
+    phase: test
+    data_root: ../data/FAUST_aligned
+    return_evecs: false
+    return_faces: false
+    return_corr: true
+    return_dist: true
+  # setting for train dataset
+  batch_size: 8
+  num_worker: 16
+
+# network setting
+networks:
+  feature_extractor:
+    type: DiffusionNet
+    in_channels: 3
+    out_channels: 128
+    cache_dir: ../data/surreal5k/diffusion
+  fmap_net:
+    type: RegularizedFMNet
+    bidirectional: true
+  permutation:
+    type: Sinkhorn
+    num_sink: 10
+    lambda_sink: 0.2
+
+# training setting
+train:
+  total_epochs: 1
+  optims:
+    feature_extractor:
+      type: Adam
+      lr: 1.0e-4
+  schedulers:
+    feature_extractor:
+      type: none
+  losses:
+    surfmnet_loss:
+      type: SURFMNetLoss
+      w_bij: 1.0
+      w_orth: 1.0
+      w_lap: 0.0
+    align_loss:
+      type: AlignLoss
+      loss_weight: 1.0e-3
+    contrast_loss:
+      type: PointInfoNCELoss
+      loss_weight: 10.0
+
+# validation setting
+val:
+  val_freq: 4000
+  metrics:
+    geo_error:
+      type: calculate_geodesic_error
+    plot_pck:
+      type: plot_pck
+
+# log setting
+logger:
+  print_freq: 50
+  save_checkpoint_freq: 4000
