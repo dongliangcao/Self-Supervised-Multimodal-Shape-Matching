@@ -1,4 +1,4 @@
-# Self-Supervised Learning for Multimodal Non-Rigid 3D Shape Matching
+# Self-Supervised Learning for Multimodal Non-Rigid 3D Shape Matching (CVPR 2023)
 ![img](figures/framework.png)
 
 ## Installation
