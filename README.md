@@ -1,4 +1,4 @@
-# [Self-Supervised Learning for Multimodal Non-Rigid 3D Shape Matching (CVPR 2023)](https://arxiv.org/abs/2303.10971)
+# [Self-Supervised Learning for Multimodal Non-Rigid 3D Shape Matching (CVPR 2023, selected as highlight)](https://arxiv.org/abs/2303.10971)
 ![img](figures/framework.png)
 
 ## Installation
@@ -8,6 +8,17 @@ conda activate fmnet
 conda install pytorch cudatoolkit -c pytorch # install pytorch
 pip install -r requirements.txt # install other necessary libraries via pip
 ```
+
+## Dataset
+To train and test datasets used in this paper, please download the datasets from the following links:
+
+- [FAUST](https://drive.google.com/file/d/1RmFxmQlwfNMLwxIUvbDp8xI80fARg1dN/view?usp=share_link)
+- [SCAPE](https://drive.google.com/file/d/1ZPrJ7h6B16-LPXw0UVLTMFYXk9qPG9rE/view?usp=share_link)
+- [SHREC19](https://drive.google.com/file/d/1phU6xyxm5fIda5dbclH_c44Rm-6WfTug/view?usp=share_link)
+- [SURREAL-5K](https://drive.google.com/file/d/1D_FHv7UHHbcXquCR-BYs1w5PJiwtqgkY/view?usp=share_link)
+- [SHREC'16](https://github.com/pvnieo/cp2p-pfarm-benchmark)
+
+We thank the original dataset providers for their contributions to the shape analysis community, and that all credits should go to the original authors.
 
 ## Train
 To train a model for 3D shape matching. You only need to write or use a YAML config file. 
