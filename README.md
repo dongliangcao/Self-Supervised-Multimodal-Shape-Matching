@@ -20,6 +20,13 @@ To train and test datasets used in this paper, please download the datasets from
 
 We thank the original dataset providers for their contributions to the shape analysis community, and that all credits should go to the original authors.
 
+## Data preparation
+For data preprocessing, we provide *[preprocess.py](preprocess.py)* to compute all things we need (LBO eigenfunctions, geodesic distance matrix).
+Here is an example for FAUST remesh data. The provided data should have a subfolder **off** containing all triangle mesh files.
+```python
+python preprocess.py --data_root ../data/FAUST_r/ --no_normalize --n_eig 128
+```
+
 ## Train
 To train a model for 3D shape matching. You only need to write or use a YAML config file. 
 In the YAML config file, you can specify everything around training. 
