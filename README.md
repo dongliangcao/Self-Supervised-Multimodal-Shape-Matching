@@ -17,6 +17,7 @@ To train and test datasets used in this paper, please download the datasets from
 - [SHREC19](https://drive.google.com/file/d/1phU6xyxm5fIda5dbclH_c44Rm-6WfTug/view?usp=share_link)
 - [SURREAL-5K](https://drive.google.com/file/d/1D_FHv7UHHbcXquCR-BYs1w5PJiwtqgkY/view?usp=share_link)
 - [SHREC'16](https://github.com/pvnieo/cp2p-pfarm-benchmark)
+- [SURREAL-PV](https://drive.google.com/file/d/1SZoQFwwEjib8KO3otDmpDI_hSV7C_9Ib/view?usp=sharing)
 
 We thank the original dataset providers for their contributions to the shape analysis community, and that all credits should go to the original authors.
 
